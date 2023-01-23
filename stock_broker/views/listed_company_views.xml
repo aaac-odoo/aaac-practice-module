@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <!-- form view for getting input -->
+        <record id="company_form_view" model="ir.ui.view">
+            <field name="name">Companies</field>
+            <field name="model">listed.company</field>
+            <field name="arch" type="xml">
+                <form string="Companies">
+                    <sheet>
+                        <div>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="initial_price"/>
+                                <field name="current_price"/>
+                            </group>
+                            <group>
+                                <field name="available_shares"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Orders">
+                                <field name="order_ids">
+                                    <tree>
+                                        <field name="user"/>
+                                        <field name="order_type"/>
+                                        <field name="number_of_shares"/>
+                                        <field name="price_at_execution"/>
+                                        <field name="total_amount"/>
+                                    </tree>
+                                </field>  
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="listed_company_action" model="ir.actions.act_window">
+            <field name="name">Companies</field>
+            <field name="res_model">listed.company</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new company
+              </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

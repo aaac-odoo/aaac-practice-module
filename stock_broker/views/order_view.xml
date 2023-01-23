@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- treee view -->
+         <record id="order_view" model="ir.ui.view">
+         <field name="name">Orders</field>
+         <field name="model">orders</field>
+             <field name="arch" type="xml">
+                 <tree string="userDetails">
+                    <field name="user"/>
+                    <field name="company_name"/>
+                    <field name="number_of_shares"/>
+                    <field name="price_at_execution"/>
+                    <button name="execute_buy_order" type="object" string="buy"/>
+                    <button name="execute_buy_order" type="object" string="sell"/>
+                    <field name="total_amount"/>     
+                 </tree>
+             </field>
+        </record>
+
+
+        <!-- form view for getting input -->
+        <record id="order_view_form" model="ir.ui.view">
+            <field name="name">Order</field>
+            <field name="model">orders</field>
+            <field name="arch" type="xml">
+                <form string="Order">
+                    <sheet>
+                        <group>
+                            <field name="user"/>
+                            <field name="company_name"/>
+                            <field name="price_at_execution"/>
+                            <field name="number_of_shares"/>
+                            <field name="total_amount"/>
+                            <button name="execute_buy_order" type="object" string="buy"/>
+                            <button name="execute_buy_order" type="object" string="sell"/>                            
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="orders_fetch_action" model="ir.actions.act_window">
+            <field name="name">Orders</field>
+            <field name="res_model">orders</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new order
+              </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
