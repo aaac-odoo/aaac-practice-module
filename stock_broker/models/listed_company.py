@@ -1,4 +1,5 @@
 # -- coding: utf-8 
+from yahoo_fin.stock_info import *
 from odoo import fields,models,api
 
 class listedCompany(models.Model):
@@ -7,7 +8,18 @@ class listedCompany(models.Model):
 
 
     name=fields.Char(string="Comapany Name", required=True)
+    ticker_name=fields.Char(string="Ticker Name", required=True)
     available_shares=fields.Integer(required=True)
     initial_price=fields.Float(required=True)
-    current_price=fields.Float(required=True)
+    current_price=fields.Float(required=True,compute="_get_live_stock_price")
     order_ids=fields.One2many("orders","company_name",string="Orders")
+
+    @api.depends("ticker_name")
+    def _get_live_stock_price(self):
+        for record in self:
+            if record.ticker_name:
+                print("....>")
+                record.current_price=get_live_price(str(record.ticker_name))
+            else:
+                record.current_price=0
+        

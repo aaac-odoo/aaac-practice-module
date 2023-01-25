@@ -15,6 +15,7 @@
                         </div>
                         <group>
                             <group>
+                                <field name="ticker_name"/>  
                                 <field name="initial_price"/>
                                 <field name="current_price"/>
                             </group>
