@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="company_1" model="listed.company">
+            <field name="name">Amazon</field>
+            <field name="ticker_name">AMZN</field>
+            <field name="available_shares">200</field>            
+        </record>     
+        <record id="company_2" model="listed.company">
+            <field name="name">Meta</field>
+            <field name="ticker_name">META</field>
+            <field name="available_shares">300</field>
+        </record>
+        <record id="company_3" model="listed.company">
+            <field name="name">Google</field>
+            <field name="ticker_name">GOOG</field>
+            <field name="available_shares">400</field>
+        </record>       
+          
+        <record id="user_1" model="users">
+            <field name="name">Mark</field>
+            <field name="initial_balance">16000</field>
+            <field name="current_balance">14000</field>
+        </record>
+        <record id="user_2" model="users">
+            <field name="name">Sundar</field>
+            <field name="initial_balance">10000</field>
+            <field name="current_balance">12000</field>
+        </record>
+        <record id="user_3" model="users">
+            <field name="name">ELon</field>
+            <field name="initial_balance">15000</field>
+            <field name="current_balance">15500</field>
+        </record>
+        <!-- <record id="order_1" model="orders">
+            <field name="user"></field>
+            <field name="company_name"></field>
+            <field name="number_of_shares"></field>            
+        </record>
+        <record id="order_1" model="orders">
+            <field name="user"></field>
+            <field name="company_name"></field>
+            <field name="number_of_shares"></field>            
+        </record>
+        <record id="order_1" model="orders">
+            <field name="user"></field>
+            <field name="company_name"></field>
+            <field name="number_of_shares"></field>            
+        </record> -->
+    </data>
+</odoo>

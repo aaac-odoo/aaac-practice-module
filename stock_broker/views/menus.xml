@@ -2,8 +2,9 @@
 
 <odoo>
     <menuitem id="stock_broker_menu_root" name="Stock Broker">
-        <menuitem id="orders_sec_level_menu" name="Orders" action="orders_fetch_action"/>
-        <menuitem id="users_sec_level_menu" name="Users" action="users_fetch_action"/>
         <menuitem id="companies_sec_level_menu" name="Companies" action="listed_company_action"/>
+        <menuitem id="users_sec_level_menu" name="Users" action="users_fetch_action"/>
+        <menuitem id="orders_sec_level_menu" name="Orders" action="orders_fetch_action"/>
+        <menuitem id="prices_sec_level_menu" name="Orders" action="prices_fetch_action"/>
     </menuitem>
 </odoo>

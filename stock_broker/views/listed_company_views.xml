@@ -16,13 +16,28 @@
                         <group>
                             <group>
                                 <field name="ticker_name"/>  
-                                <field name="initial_price"/>
                                 <field name="current_price"/>
                             </group>
                             <group>
                                 <field name="available_shares"/>
+                                <!-- <sheet>
+                                    
+                                    <graph string="Price Analysis" type="line" sample="1">
+                                         <field name="year"/>
+                                         <field name="price" type="measure"/>
+                                     </graph>
+                                 </field>
+                                </sheet> -->
+                                
                             </group>
+                            
+                            <div class="oe_chart">
+                                <field name="price_ids" type="line"
+                                attrs="{'model': 'stock_prices' }"/>
+                            </div>
+
                         </group>
+
                         <notebook>
                             <page string="Orders">
                                 <field name="order_ids">
@@ -37,6 +52,8 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <!-- <field name="price_ids" widget="dashboard_graph" graph_type="line"/> -->
+
                 </form>
             </field>
         </record>
@@ -44,7 +61,7 @@
         <record id="listed_company_action" model="ir.actions.act_window">
             <field name="name">Companies</field>
             <field name="res_model">listed.company</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,graph</field>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
                 Add a new company

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_price_graph" model="ir.ui.view">
+             <field name="name">stock.price.graph</field>
+             <field name="model">stock_prices</field>
+             <field name="arch" type="xml">
+                 <graph string="Price Analysis" type="line" sample="1">
+                     <field name="year"/>
+                     <field name="price" type="measure"/>
+                 </graph>
+             </field>
+        </record>
+
+        <record id="prices_fetch_action" model="ir.actions.act_window">
+            <field name="name">Price</field>
+            <field name="res_model">stock_prices</field>
+            <field name="view_mode">graph</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new price
+              </p>
+            </field>
+        </record>
+    </data>
+</odoo>

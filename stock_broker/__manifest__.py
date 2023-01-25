@@ -12,7 +12,12 @@
         'views/order_view.xml',
         'views/listed_company_views.xml',
         'views/user_view.xml',
+        'views/stock_price_view.xml',
         'views/menus.xml',
+    ],
+
+    'demo':[
+        'demo/demo_data.xml'
     ],
     'installable': True,
     'application': True,
