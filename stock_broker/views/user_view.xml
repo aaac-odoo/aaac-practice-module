@@ -10,7 +10,8 @@
                  <tree string="userDetails">
                     <field name="name"/>
                     <field name="initial_balance"/>
-                    <field name="current_balance"/>                  
+                    <field name="current_balance"/>    
+                    <field name="growth"/>              
                  </tree>
              </field>
         </record>
