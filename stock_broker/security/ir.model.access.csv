@@ -3,3 +3,4 @@ access_listed_company,access_listed_company,model_listed_company,base.group_user
 access_orders,access_orders,model_orders,base.group_user,1,1,1,1
 stock_broker.access_users,access_users,stock_broker.model_users,base.group_user,1,1,1,1
 access_stock_prices,access_stock_prices,stock_broker.model_stock_prices,base.group_user,1,1,1,1
+stock_broker.access_category,access_category,stock_broker.model_category,base.group_user,1,1,1,1

@@ -8,5 +8,6 @@
             <menuitem id="bp_users_thid_level_menu" name="Users" action="users_fetch_action"/>
         </menuitem>
         <menuitem id="prices_sec_level_menu" name="Prices" action="prices_fetch_action"/>
+        <menuitem id="categories_sec_level_menu" name="Categories" action="categories_fetch_action"/>
     </menuitem>
 </odoo>

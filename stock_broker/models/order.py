@@ -19,30 +19,15 @@ class order(models.Model):
             else:
                 record.price_at_execution=0
         
-        
 
-    # order_type=fields.Selection(
-    #     string="Order Type",
-    #     selection=[('buy', 'Buy'), ('sell', 'Sell')])
-
+    category=fields.Many2one(related="company_name.category")
     order_type=fields.Char(string="Order type")
-
-
     total_amount=fields.Float(string="Amount",compute="_compute_total")
     @api.depends("price_at_execution","number_of_shares")
     def _compute_total(self):
         for record in self:
             record.total_amount=record.price_at_execution*record.number_of_shares
 
-        # total_selling_shares = 0 
-        # total_b_shares = 0
-        # for record in self:
-        #     if record.order_type = buy:
-        #         total_selling_shares += record.number_of_shares
-        #     else:
-        #         total_b_shares += record.number_of_shares
-
-        # total_shares = total_selling_shares - total_b_shares
 
     def execute_buy_order(self):        
         for record in self:

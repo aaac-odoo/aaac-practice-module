@@ -14,6 +14,7 @@ class listedCompany(models.Model):
     current_price=fields.Float(compute="_get_live_stock_price")
     order_ids=fields.One2many("orders","company_name",string="Orders")
     price_ids=fields.One2many('stock_prices',"company_name",string="prices")
+    category=fields.Many2one("category", string="Category", required=True)
 
     @api.depends("ticker_name")
     def _get_live_stock_price(self):

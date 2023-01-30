@@ -13,6 +13,7 @@
         'views/listed_company_views.xml',
         'views/user_view.xml',
         'views/stock_price_view.xml',
+        'views/category_view.xml',
         'views/menus.xml',
     ],
 
