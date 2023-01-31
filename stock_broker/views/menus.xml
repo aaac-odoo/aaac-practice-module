@@ -2,12 +2,15 @@
 
 <odoo>
     <menuitem id="stock_broker_menu_root" name="Stock Broker">
-        <menuitem id="companies_sec_level_menu" name="Companies" action="listed_company_action"/>
-        <menuitem id="orders_sec_level_menu" name="Orders" action="orders_fetch_action"/>
-        <menuitem id="users_sec_level_menu" name="Best Performing">
-            <menuitem id="bp_users_thid_level_menu" name="Users" action="users_fetch_action"/>
+        <menuitem id="explore_sec_level_menu" name="Explore">            
+            <menuitem id="companies_third_level_menu" name="Companies" action="listed_company_action"/>
+            <menuitem id="categories_third_level_menu" name="Categories" action="categories_fetch_action"/>
         </menuitem>
+        <menuitem id="users_sec_level_menu" name="Best Performing">
+            <menuitem id="tp_companies_third_level_menu" name="Companies" action="listed_company_action"/>
+            <menuitem id="tp_users_third_level_menu" name="Users" action="users_fetch_action"/>
+        </menuitem>
+        <menuitem id="orders_sec_level_menu" name="Orders" action="orders_fetch_action"/>
         <menuitem id="prices_sec_level_menu" name="Prices" action="prices_fetch_action"/>
-        <menuitem id="categories_sec_level_menu" name="Categories" action="categories_fetch_action"/>
     </menuitem>
 </odoo>

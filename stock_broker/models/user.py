@@ -1,6 +1,6 @@
 # -- coding: utf-8 
 from odoo import fields,models,api
-from . import order
+
 class listedCompany(models.Model):
     _name = "users"
     _description="model description"

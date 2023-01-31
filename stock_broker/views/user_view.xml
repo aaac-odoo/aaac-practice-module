@@ -30,6 +30,9 @@
                             <field name="initial_balance"/>
                             <field name="current_balance"/>
                         </group>
+                        <group>
+                            
+                        </group>
                         <notebook>
                             <page string="Orders">
                                 <field name="order_ids">
@@ -40,6 +43,19 @@
                                         <field name="price_at_execution"/>
                                         <field name="total_amount"/>
                                     </tree>
+                                    <form string="Order">
+                                        <sheet>
+                                            <group>
+                                                <field name="user"/>
+                                                <field name="company_name"/>
+                                                <field name="price_at_execution"/>
+                                                <field name="number_of_shares"/>
+                                                <field name="total_amount"/>
+                                                <button name="execute_buy_order" type="object" string="buy" />
+                                                <button name="execute_sell_order" type="object" string="sell"/>                     
+                                            </group>
+                                        </sheet>
+                                    </form>
                                 </field>  
                             </page>
                         </notebook>

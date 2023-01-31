@@ -22,7 +22,8 @@ class order(models.Model):
 
     category=fields.Many2one(related="company_name.category")
     order_type=fields.Char(string="Order type")
-    total_amount=fields.Float(string="Amount",compute="_compute_total")
+    total_amount=fields.Float(string="Amount",compute="_compute_total",store=True)
+    
     @api.depends("price_at_execution","number_of_shares")
     def _compute_total(self):
         for record in self:

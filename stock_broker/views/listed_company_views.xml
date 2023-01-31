@@ -20,25 +20,11 @@
                                 <field name="current_price"/>
                             </group>
                             <group>
-                                <field name="available_shares"/>
-                                <!-- <sheet>
-                                    
-                                    <graph string="Price Analysis" type="line" sample="1">
-                                         <field name="year"/>
-                                         <field name="price" type="measure"/>
-                                     </graph>
-                                 </field>
-                                </sheet> -->
-                                
+                                <field name="initial_price"/>
+                                <field name="growth"/>
+                                <field name="available_shares"/>                                                  
                             </group>
-                            
-                            <div class="oe_chart">
-                                <field name="price_ids" type="line"
-                                attrs="{'model': 'stock_prices' }"/>
-                            </div>
-
                         </group>
-
                         <notebook>
                             <page string="Orders">
                                 <field name="order_ids">
@@ -53,11 +39,27 @@
                             </page>
                         </notebook>
                     </sheet>
-                    <!-- <field name="price_ids" widget="dashboard_graph" graph_type="line"/> -->
-
                 </form>
             </field>
         </record>
+
+
+        <!-- treee view -->
+         <record id="tp_companies_view" model="ir.ui.view">
+         <field name="name">Top Performimg Companies</field>
+         <field name="model">listed.company</field>
+             <field name="arch" type="xml">
+                 <tree string="userDetails">
+                    <field name="name"/>
+                    <field name="category"/>
+                    <field name="current_price"/>
+                    <field name="initial_price"/>
+                    <field name="growth"/>
+                    <field name="sequence" widget="handle"/>       
+                 </tree>
+             </field>
+        </record>
+
 
         <record id="listed_company_action" model="ir.actions.act_window">
             <field name="name">Companies</field>
