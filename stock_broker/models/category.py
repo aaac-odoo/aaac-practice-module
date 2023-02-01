@@ -1,5 +1,5 @@
 # -- coding: utf-8 
-from yahoo_fin.stock_info import *
+# from yahoo_fin.stock_info import *
 from odoo import fields,models,api
 
 class Category(models.Model):

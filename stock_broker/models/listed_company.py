@@ -1,5 +1,5 @@
 # -- coding: utf-8 
-from yahoo_fin.stock_info import *
+# from yahoo_fin.stock_info import *
 from odoo import fields,models,api
 import random
 
@@ -16,8 +16,8 @@ class listedCompany(models.Model):
     order_ids=fields.One2many("orders","company_name",string="Orders")
     price_ids=fields.One2many('stock_prices',"company_name",string="prices")
     category=fields.Many2one("category", string="Category")
-    growth=fields.Float(string="Growth %", compute='_compute_growth', store=True)
-    sequence=fields.Float()
+    growth=fields.Float(string="Growth %", compute='_compute_growth')
+    sequence=fields.Float(default=1)
     @api.depends('initial_price','current_price')
     def _compute_growth(self):
         for record in self:

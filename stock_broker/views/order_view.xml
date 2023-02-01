@@ -10,9 +10,11 @@
                  <tree string="userDetails">
                     <field name="user"/>
                     <field name="company_name"/>
+                    <field name="order_type"/> 
                     <field name="number_of_shares"/>
                     <field name="price_at_execution"/>
-                    <field name="total_amount"/>     
+                    <field name="total_amount"/>    
+
                  </tree>
              </field>
         </record>
@@ -31,8 +33,9 @@
                             <field name="price_at_execution"/>
                             <field name="number_of_shares"/>
                             <field name="total_amount"/>
-                            <button name="execute_buy_order" type="object" string="buy" />
-                            <button name="execute_sell_order" type="object" string="sell"/>                       
+                            <button name="execute_buy_order" type="object" string="buy" attrs="{'invisible': [('order_type', 'in', ['buy','sell'])]}" />
+                            <button name="execute_sell_order" type="object" string="sell" attrs="{'invisible': [('order_type', 'in', ['','sell'] )]}"/>      
+                            <field name="order_type" invisible='1'/>                 
                         </group>
                     </sheet>
                 </form>

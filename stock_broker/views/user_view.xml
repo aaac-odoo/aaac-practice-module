@@ -42,21 +42,13 @@
                                         <field name="number_of_shares"/>
                                         <field name="price_at_execution"/>
                                         <field name="total_amount"/>
-                                    </tree>
-                                    <form string="Order">
-                                        <sheet>
-                                            <group>
-                                                <field name="user"/>
-                                                <field name="company_name"/>
-                                                <field name="price_at_execution"/>
-                                                <field name="number_of_shares"/>
-                                                <field name="total_amount"/>
-                                                <button name="execute_buy_order" type="object" string="buy" />
-                                                <button name="execute_sell_order" type="object" string="sell"/>                     
-                                            </group>
-                                        </sheet>
-                                    </form>
+                                    </tree>                                    
                                 </field>  
+                            </page>
+                            <page string="Watchlist">
+                                <field name="watchlist_ids">
+                                    
+                                </field>
                             </page>
                         </notebook>
                     </sheet>

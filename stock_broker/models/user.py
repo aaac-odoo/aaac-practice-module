@@ -15,4 +15,5 @@ class listedCompany(models.Model):
         for record in self:
             record.growth=((record.current_balance - record.initial_balance)/record.current_balance)*100
 
-    order_ids=fields.One2many("orders","user",string="Orders")
+    order_ids=fields.One2many("orders","user",string="Orders",domain=[('order_type','=','buy')])
+    watchlist_ids=fields.Many2many("listed.company",string="Watchlist")
