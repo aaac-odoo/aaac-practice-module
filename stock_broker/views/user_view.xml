@@ -11,7 +11,7 @@
                     <field name="name"/>
                     <field name="initial_balance"/>
                     <field name="current_balance"/>    
-                    <field name="growth"/>              
+                    <field name="profit"/>              
                  </tree>
              </field>
         </record>

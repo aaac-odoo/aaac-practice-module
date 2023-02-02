@@ -11,6 +11,5 @@
             <menuitem id="tp_users_third_level_menu" name="Users" action="users_fetch_action"/>
         </menuitem>
         <menuitem id="orders_sec_level_menu" name="Orders" action="orders_fetch_action"/>
-        <menuitem id="prices_sec_level_menu" name="Prices" action="prices_fetch_action"/>
     </menuitem>
 </odoo>

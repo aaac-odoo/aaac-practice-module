@@ -14,7 +14,6 @@
                     <field name="number_of_shares"/>
                     <field name="price_at_execution"/>
                     <field name="total_amount"/>    
-
                  </tree>
              </field>
         </record>
@@ -30,12 +29,15 @@
                         <group>
                             <field name="user"/>
                             <field name="company_name"/>
+                            <field name="ticker_name"/>
                             <field name="price_at_execution"/>
                             <field name="number_of_shares"/>
                             <field name="total_amount"/>
+                            <field name="order_type"/>
+                            <!-- 
                             <button name="execute_buy_order" type="object" string="buy" attrs="{'invisible': [('order_type', 'in', ['buy','sell'])]}" />
                             <button name="execute_sell_order" type="object" string="sell" attrs="{'invisible': [('order_type', 'in', ['','sell'] )]}"/>      
-                            <field name="order_type" invisible='1'/>                 
+                            <field name="order_type" invisible='1'/>   -->               
                         </group>
                     </sheet>
                 </form>
@@ -58,6 +60,18 @@
             <field name="name">Orders</field>
             <field name="res_model">orders</field>
             <field name="view_mode">tree,form,graph</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new order
+              </p>
+            </field>
+        </record>
+
+        <record id="orders_fetch_action_with_filter" model="ir.actions.act_window">
+            <field name="name">Orders</field>
+            <field name="res_model">orders</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="domain">[('category', '=', active_id)]</field>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
                 Add a new order

@@ -17,9 +17,10 @@
             <field name="name">Price</field>
             <field name="res_model">stock_prices</field>
             <field name="view_mode">graph</field>
+            <field name="domain">[('company_name', '=', active_id)]</field>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
-                Add a new price
+                Add new data
               </p>
             </field>
         </record>
