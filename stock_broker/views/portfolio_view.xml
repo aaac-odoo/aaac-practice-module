@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- treee view -->
+         <record id="portfolio_tree_view" model="ir.ui.view">
+         <field name="name">Portfolios</field>
+         <field name="model">portfolio</field>
+             <field name="arch" type="xml">
+                 <tree>
+                    <field name="name"/>   
+                 </tree>
+             </field>
+        </record>
+
+
+        <record id="portfolio_fetch_action" model="ir.actions.act_window">
+            <field name="name">Portfolio</field>
+            <field name="res_model">portfolio</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new record
+              </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

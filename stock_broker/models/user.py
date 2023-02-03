@@ -9,7 +9,7 @@ class listedCompany(models.Model):
     name=fields.Char(string="Name", required=True)
     initial_balance=fields.Float(string="Initial Balance", required=True)
     current_balance=fields.Float(string="Current Balance", required=True)
-    current_holdings=fields.Float(compute="_compute_holdings")
+    # current_holdings=fields.Float(compute="_compute_holdings")
     profit=fields.Float(string="Profit (%)", compute='_compute_profit', store=True)
     order_ids=fields.One2many("orders","user",string="Orders",domain=[('order_type','=','buy')])
     watchlist_ids=fields.Many2many("listed.company",string="Watchlist")

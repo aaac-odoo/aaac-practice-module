@@ -25,6 +25,7 @@ class order(models.Model):
     category=fields.Many2one(related="company_name.category")
     # order_type=fields.Char(string="Order type")
     total_amount=fields.Float(string="Amount",compute="_compute_total")
+    portfolio_id=fields.Many2one("portfolio",string="Portfolio")
     order_type=fields.Selection(selection=[('buy','Buy'),('sell','Sell')],string="Order Type")
     @api.depends("user","order_type","total_amount")
     def _compute_name(self):
@@ -39,36 +40,46 @@ class order(models.Model):
         for record in self:
             record.total_amount=record.price_at_execution*record.number_of_shares
 
+    @api.model
+    def create(self,vals):
+        user=self.env['users'].browse(vals['user'])
+        company=self.env['listed.company'].browse(vals['company_name'])
+        if self.env['portfolio'].search([('name','=',user.name+company.name)]):
+            print("fffffff")
+        else:
+            print("nnnfffff")
+            self.env['portfolio'].create({'company_name':company.name, 'user_name':user.name})
 
-    # @api.model
-    # def create(self,vals):
-
+        breakpoint()
+        vals['portfolio_id']=self.env['portfolio'].search([('name','=',user.name+company.name)])
+        return super().create(vals)
     #     user = self.env['users'].browse(vals['user'])
 
     #     company_name= self.env['listed.company'].browse(vals['company_name'])
-    #     if vals['order_type']:  
-    #         vals['order_type']='sell'          
-    #         user.current_balance=user.current_balance+1000
+    #     if vals['order_type']=='sell':           
+    #         user.current_balance=user.current_balance+(vals['number_of_shares']*company_name.current_price)
     #         company_name.available_shares=company_name.available_shares+vals['number_of_shares']
     #     else:        
-    #         vals['order_type']='buy'
-    #         user.current_balance=user.current_balance-1000
+        
+    #         user.current_balance=user.current_balance-(vals['number_of_shares']*company_name.current_price)
     #         company_name.available_shares=company_name.available_shares-vals['number_of_shares']
 
         
 
-    # def execute_buy_order(self):        
-    #     for record in self:
-    #         record.order_type='buy'
-    #         record.user.current_balance=record.user.current_balance-record.total_amount
-    #         record.company_name.available_shares=record.company_name.available_shares-record.number_of_shares 
+        
+
+    def execute_buy_order(self):        
+        for record in self:
+            record.order_type='buy'
+            record.user.current_balance=record.user.current_balance-record.total_amount
+            record.company_name.available_shares=record.company_name.available_shares-record.number_of_shares 
               
 
-    # def execute_sell_order(self):        
-    #     for record in self:
-    #         record.order_type='sell'
-    #         print("....>sold")
-    #         record.user.current_balance=record.user.current_balance+record.total_amount
-    #         record.company_name.available_shares=record.company_name.available_shares+record.number_of_shares
+    def execute_sell_order(self):        
+        for record in self:
+            record.order_type='sell'
+            print("....>sold")
+            record.user.current_balance=record.user.current_balance+record.total_amount
+            record.company_name.available_shares=record.company_name.available_shares+record.number_of_shares
         
     #         

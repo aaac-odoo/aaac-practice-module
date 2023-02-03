@@ -14,6 +14,7 @@
         'views/user_view.xml',
         'views/stock_price_view.xml',
         'views/category_view.xml',
+        'views/portfolio_view.xml',
         'views/menus.xml',
     ],
 
