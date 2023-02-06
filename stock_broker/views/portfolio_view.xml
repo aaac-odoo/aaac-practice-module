@@ -12,6 +12,21 @@
                  </tree>
              </field>
         </record>
+<!-- 
+        <record id="portfolio_tree_view" model="ir.ui.view">
+         <field name="name">PortfoliosFormView</field>
+         <field name="model">portfolio</field>
+             <field name="arch" type="xml">
+                <form>
+                    <field name="user"/>
+                    <field name="company"/>
+                    <field name="number_of_shares"/>
+                    <field name=""/>
+                    <field name=""/>
+                    <field name=""/>
+                </form>
+             </field>
+        </record> -->
 
 
         <record id="portfolio_fetch_action" model="ir.actions.act_window">

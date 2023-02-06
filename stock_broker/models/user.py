@@ -11,8 +11,9 @@ class listedCompany(models.Model):
     current_balance=fields.Float(string="Current Balance", required=True)
     # current_holdings=fields.Float(compute="_compute_holdings")
     profit=fields.Float(string="Profit (%)", compute='_compute_profit', store=True)
-    order_ids=fields.One2many("orders","user",string="Orders",domain=[('order_type','=','buy')])
+    order_ids=fields.One2many("orders","user",string="Orders")
     watchlist_ids=fields.Many2many("listed.company",string="Watchlist")
+    portfolio_ids=fields.One2many('portfolio','user',string="Portfolios")
     @api.depends('initial_balance','current_balance')
     def _compute_profit(self):
         for record in self:

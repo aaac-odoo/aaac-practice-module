@@ -34,6 +34,15 @@
                             
                         </group>
                         <notebook>
+                            <page string="Portfolio">
+                                <field name="portfolio_ids">
+                                    <tree>
+                                        <field name="company"/>
+                                        <field name="amount_invested"/>
+                                        <!-- <field name="current_value"/> -->
+                                    </tree>                                    
+                                </field>  
+                            </page>                            
                             <page string="Orders">
                                 <field name="order_ids">
                                     <tree>

@@ -23,7 +23,6 @@ class order(models.Model):
         
     state=fields.Char()
     category=fields.Many2one(related="company_name.category")
-    # order_type=fields.Char(string="Order type")
     total_amount=fields.Float(string="Amount",compute="_compute_total")
     portfolio_id=fields.Many2one("portfolio",string="Portfolio")
     order_type=fields.Selection(selection=[('buy','Buy'),('sell','Sell')],string="Order Type")
@@ -40,19 +39,31 @@ class order(models.Model):
         for record in self:
             record.total_amount=record.price_at_execution*record.number_of_shares
 
-    @api.model
-    def create(self,vals):
-        user=self.env['users'].browse(vals['user'])
-        company=self.env['listed.company'].browse(vals['company_name'])
-        if self.env['portfolio'].search([('name','=',user.name+company.name)]):
-            print("fffffff")
-        else:
-            print("nnnfffff")
-            self.env['portfolio'].create({'company_name':company.name, 'user_name':user.name})
+    # @api.model
+    # def create(self,vals):
+    #     user=self.env['users'].browse(vals['user'])
+    #     company=self.env['listed.company'].browse(vals['company_name'])
+    #     print(company)
+    #     if self.env['portfolio'].search([('name','=',user.name+company.name)]):
+    #         print("fffffff")
+    #     else:
+    #         print("nnnfffff")
+    #         self.env['portfolio'].create({'company_name':company.name, 'user_name':user.name})
+        
+    #     portfolio=self.env['portfolio'].search([('name','=',user.name+company.name)])
+    #     print(portfolio)
+    #     vals['portfolio_id']=portfolio._origin.id  
+    #     if vals['order_type']=='buy':
+    #         portfolio.number_of_shares=portfolio.number_of_shares+vals['number_of_shares']
+    #         # portfolio.amount_invested+=(vals['number_of_shares']*vals['price_at_execution'])
+    #     else:
+    #         portfolio.number_of_shares=portfolio.number_of_shares-vals['number_of_shares']
+    #         breakpoint()
+    #         # portfolio.amount_invested-=vals['number_of_shares']*vals['price_at_execution']
+    
+    #     print(portfolio.number_of_shares)
 
-        breakpoint()
-        vals['portfolio_id']=self.env['portfolio'].search([('name','=',user.name+company.name)])
-        return super().create(vals)
+    #     return super().create(vals)
     #     user = self.env['users'].browse(vals['user'])
 
     #     company_name= self.env['listed.company'].browse(vals['company_name'])
@@ -73,13 +84,25 @@ class order(models.Model):
             record.order_type='buy'
             record.user.current_balance=record.user.current_balance-record.total_amount
             record.company_name.available_shares=record.company_name.available_shares-record.number_of_shares 
-              
+            record.link_portfolio()
+            record.portfolio_id.number_of_shares+=record.number_of_shares
+            record.portfolio_id.amount_invested+=record.total_amount
 
     def execute_sell_order(self):        
         for record in self:
             record.order_type='sell'
-            print("....>sold")
             record.user.current_balance=record.user.current_balance+record.total_amount
             record.company_name.available_shares=record.company_name.available_shares+record.number_of_shares
+            record.link_portfolio()            
+            record.portfolio_id.number_of_shares-=record.number_of_shares
+            record.portfolio_id.amount_invested-=record.total_amount
         
-    #         
+    def link_portfolio(self):
+        for record in self:
+            if self.env['portfolio'].search([('name','=',record.user.name+record.company_name.name)]):
+                print("fffffff")
+            else:
+                print("nnnfffff")
+                self.env['portfolio'].create({'company':record.company_name._origin.id, 'user':record.user._origin.id})
+            
+            record.portfolio_id=self.env['portfolio'].search([('name','=',record.user.name+record.company_name.name)])._origin.id
