@@ -9,7 +9,8 @@ class portfolio(models.Model):
     user=fields.Many2one('users',string="User")
     order_ids=fields.One2many("orders","portfolio_id")
     amount_invested=fields.Float()
-    # current_value=fields.Float(compute="_compute_current_value")
+    current_share_price=fields.Float(related="company.current_price", string="Price/unit")
+    current_value=fields.Float(compute="_compute_current_value")
     number_of_shares=fields.Integer()
 
 
@@ -21,10 +22,25 @@ class portfolio(models.Model):
             else:
                 record.name=""
 
-    # @api.depends('company_name','number_of_shares')
-    # def _compute_current_value(self):
-    #     for record in self:
-    #         record.current_value=record.company_name.current_price*record.number_of_shares
+    @api.depends('company','number_of_shares')
+    def _compute_current_value(self):
+        for record in self:
+            record.current_value=record.company.current_price*record.number_of_shares
+
+    def sell_stocks(self):
+        # breakpoint()
+        
+        for record in self:
+            print(record.company.id)
+            abc =  {
+                'name': ("Sell Stocks"),
+                'type': 'ir.actions.act_window',
+                'res_model': 'orders',
+                'view_mode': 'form' ,           
+                'context': {'default_company_name': record.company.id,
+                            'default_number_of_shares': 20 }
+            }
+            return abc
 
     # @api.model
     # def create(self,vals):

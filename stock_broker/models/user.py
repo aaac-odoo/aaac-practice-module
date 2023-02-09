@@ -19,6 +19,13 @@ class listedCompany(models.Model):
         for record in self:
             record.profit=((record.current_balance - record.initial_balance)/record.current_balance)*100
 
+    current_portfolio_value=fields.Float(compute="_compute_portfolio_value")
+
+    @api.depends('portfolio_ids')
+    def _compute_portfolio_value(self):
+        for record in self:
+            record.current_portfolio_value=sum(record.portfolio_ids.mapped('current_value'))
+
     # @api.depends('order_ids'):
     #     for record in self:
     #         for order in record.order_ids:

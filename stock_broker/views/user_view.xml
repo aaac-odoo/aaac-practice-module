@@ -21,14 +21,20 @@
             <field name="name">User</field>
             <field name="model">users</field>
             <field name="arch" type="xml">
-                <form string="Tags">
+                <form string="user">
                     <sheet>
+                        <div name="button_box" class="oe_button_box">
+                            <button type="action" class="oe_stat_button" name="%(portfolio_fetch_action)d" 
+                            string="Portfolio">
+                            </button>
+                        </div>
                         <div>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
                             <field name="initial_balance"/>
                             <field name="current_balance"/>
+                            <field name="current_portfolio_value"/>
                         </group>
                         <group>
                             

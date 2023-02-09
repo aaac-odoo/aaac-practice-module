@@ -33,6 +33,7 @@ class listedCompany(models.Model):
         #         record.current_price=get_live_price(record.ticker_name)
         #     else:
         #         record.current_price=0
+
             
             x=random.random()
             record.current_price=x*100
