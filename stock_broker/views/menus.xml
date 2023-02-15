@@ -13,5 +13,6 @@
         <menuitem id="orders_sec_level_menu" name="Orders" action="orders_fetch_action"/>
 
         <menuitem id="portfolio_sec_level_menu" name="Portfolio" action="portfolio_fetch_without_filter_action"/>
+        <menuitem id="sip_sec_level_menu" name="SIPs" action="sips_fetch_action"/>
     </menuitem>
 </odoo>

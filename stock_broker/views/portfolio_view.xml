@@ -39,8 +39,8 @@
             <field name="name">portfolio.pie.chart</field>
             <field name="model">portfolio</field>
             <field name="arch" type="xml">
-                <graph string="order pie chart" type="pie" sample="1">
-                    <field name="current_value" />
+                <graph string="portfolio graph" type="bar" sample="1">
+                    <field name="current_value" type="measure" />
                     <field name="company"/>
                 </graph>
             </field>

@@ -3,21 +3,20 @@
     <data>
 
         <!-- treee view -->
-         <record id="user_treeView" model="ir.ui.view">
-         <field name="name">Users</field>
-         <field name="model">users</field>
+         <record id="sip_treeView" model="ir.ui.view">
+         <field name="name">SIPs</field>
+         <field name="model">sip.sip</field>
              <field name="arch" type="xml">
                  <tree string="userDetails">
-                    <field name="name"/>
-                    <field name="initial_balance"/>
-                    <field name="current_balance"/>    
-                    <field name="profit"/>              
+                    <field name="user_id"/>
+                    <field name="category_id"/>
+                    <field name="amount"/>             
                  </tree>
              </field>
         </record>
         
         <!-- form view for getting input -->
-        <record id="user_view_form" model="ir.ui.view">
+       <!--  <record id="user_view_form" model="ir.ui.view">
             <field name="name">User</field>
             <field name="model">users</field>
             <field name="arch" type="xml">
@@ -45,7 +44,6 @@
                                     <tree>
                                         <field name="company"/>
                                         <field name="amount_invested"/>
-                                        <!-- <field name="current_value"/> -->
                                     </tree>                                    
                                 </field>  
                             </page>                            
@@ -60,17 +58,6 @@
                                     </tree>                                    
                                 </field>  
                             </page>
-                            <page string="SIPs">
-                                <field name="sip_ids">
-                                    <tree>
-                                        <field name="category_id"/>
-                                        <field name="total_amount"/>
-                                        <field name="investment_value"/>
-                                        <field name="number_of_installments"/>
-                                        <field name="installment_type"/>
-                                    </tree>
-                                </field>
-                            </page>
                             <page string="Watchlist">
                                 <field name="watchlist_ids">
                                     
@@ -80,15 +67,15 @@
                     </sheet>
                 </form>
             </field>
-        </record>
+        </record> -->
 
-        <record id="users_fetch_action" model="ir.actions.act_window">
-            <field name="name">Users</field>
-            <field name="res_model">users</field>
+        <record id="sips_fetch_action" model="ir.actions.act_window">
+            <field name="name">SIPs</field>
+            <field name="res_model">sip.sip</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
-                Add a new user
+                Add new data
               </p>
             </field>
         </record>

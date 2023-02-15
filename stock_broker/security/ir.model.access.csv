@@ -5,3 +5,5 @@ stock_broker.access_users,access_users,stock_broker.model_users,base.group_user,
 access_stock_prices,access_stock_prices,stock_broker.model_stock_prices,base.group_user,1,1,1,1
 stock_broker.access_category,access_category,stock_broker.model_category,base.group_user,1,1,1,1
 stock_broker.access_portfolio,access_portfolio,stock_broker.model_portfolio,base.group_user,1,1,1,1
+stock_broker.access_sip_sip,access_sip_sip,stock_broker.model_sip_sip,base.group_user,1,1,1,1
+stock_broker.access_weekly_sips,access_weekly_sips,stock_broker.model_weekly_sips,base.group_user,1,1,1,1

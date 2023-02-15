@@ -15,6 +15,9 @@
         'views/stock_price_view.xml',
         'views/category_view.xml',
         'views/portfolio_view.xml',
+        'views/consultant_view.xml',
+        'views/sip_cron_job_records.xml',
+        'views/sip_view.xml',
         'views/menus.xml',
     ],
 

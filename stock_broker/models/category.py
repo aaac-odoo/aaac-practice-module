@@ -10,6 +10,12 @@ class Category(models.Model):
 
     company_ids=fields.One2many("listed.company","category", string="companies")
     average_growth=fields.Float(string="Average growth", compute="_compute_growth")
+    
+    order_ids=fields.One2many("orders","category",string="orders")
+    order_count=fields.Integer(compute="_compute_order_count")
+
+    average_share_price=fields.Float(compute="_compute_avg_share_price")
+
     @api.depends('company_ids')
     def _compute_growth(self):
         for record in self:
@@ -21,9 +27,17 @@ class Category(models.Model):
                 record.average_growth=sum/len(record.company_ids)
             else:
                 record.average_growth=0
-    order_ids=fields.One2many("orders","category",string="orders")
-    order_count=fields.Integer(compute="_compute_order_count")
+
     @api.depends("order_count")
     def _compute_order_count(self):
         for record in self:
             record.order_count=len(record.order_ids)
+
+    @api.depends()
+    def _compute_avg_share_price(self):
+        for record in self:
+            if record.company_ids:
+                record.average_share_price=sum(record.company_ids.mapped('current_price'))/len(record.company_ids)
+            else:
+                record.average_share_price=0 
+

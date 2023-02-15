@@ -14,12 +14,14 @@ class listedCompany(models.Model):
     order_ids=fields.One2many("orders","user",string="Orders")
     watchlist_ids=fields.Many2many("listed.company",string="Watchlist")
     portfolio_ids=fields.One2many('portfolio','user',string="Portfolios")
+
+    current_portfolio_value=fields.Float(compute="_compute_portfolio_value")
+    # consultant_ids=fields.Many2many("res.users",string="Consultants")
+    sip_ids=fields.One2many("sip.sip",'user_id',string="SIPs")
     @api.depends('initial_balance','current_balance')
     def _compute_profit(self):
         for record in self:
             record.profit=((record.current_balance - record.initial_balance)/record.current_balance)*100
-
-    current_portfolio_value=fields.Float(compute="_compute_portfolio_value")
 
     @api.depends('portfolio_ids')
     def _compute_portfolio_value(self):
